@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Example template for using custom resource
+Parameters:
+  MESSAGE:
+    Type: String
+    Description: Test message
+
+Resources:
+    MyCustomResource:
+      Type: 'Custom::MyCustomResource'
+      Version: '1.0'
+      Properties:
+        ServiceToken: !ImportValue MyCustomResourceFunction 
+        Repo: !Ref MESSAGE
